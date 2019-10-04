@@ -27,7 +27,7 @@ sudo apt-get install --no-install-recommends \
 sudo apt-get install -y --no-install-recommends libnvinfer5=5.1.5-1+cuda10.0 \
     libnvinfer-dev=5.1.5-1+cuda10.0
 touch training-log.txt
-nohup python3 lstm.py >> training-log.txt 2>&1 &
+nohup python3 lstm.py $1 >> training-log.txt 2>&1 &
 
 
 
