@@ -1,5 +1,4 @@
 #!bin/bash
-git clone https://github.com/mlljet002/Classical-Piano-Composer.git
 sudo apt update
 sudo apt install python3-pip -y
 pip3 install tensorflow-gpu music21 keras h5py
