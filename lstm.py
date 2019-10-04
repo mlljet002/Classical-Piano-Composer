@@ -1,5 +1,6 @@
 """ This module prepares midi file data and feeds it to the neural
     network for training """
+import sys
 import glob
 import pickle
 import numpy
@@ -12,14 +13,14 @@ from keras.layers import Activation
 from keras.utils import np_utils
 from keras.callbacks import ModelCheckpoint
 
-def train_network():
+def train_network(sl):
     """ Train a Neural Network to generate music """
     notes = get_notes()
 
     # get amount of pitch names
     n_vocab = len(set(notes))
 
-    network_input, network_output = prepare_sequences(notes, n_vocab)
+    network_input, network_output = prepare_sequences(notes, n_vocab, sl)
 
     model = create_network(network_input, n_vocab)
 
@@ -53,9 +54,9 @@ def get_notes():
 
     return notes
 
-def prepare_sequences(notes, n_vocab):
+def prepare_sequences(notes, n_vocab, sl):
     """ Prepare the sequences used by the Neural Network """
-    sequence_length = 100
+    sequence_length = sl
 
     # get all pitch names
     pitchnames = sorted(set(item for item in notes))
@@ -119,4 +120,6 @@ def train(model, network_input, network_output):
     model.fit(network_input, network_output, epochs=200, batch_size=64, callbacks=callbacks_list)
 
 if __name__ == '__main__':
-    train_network()
+    sl = sys.argv[1]
+    print("Training with sequence length:",sl)
+    train_network(sl)
