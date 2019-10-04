@@ -26,7 +26,6 @@ sudo apt-get install --no-install-recommends \
 # Install TensorRT. Requires that libcudnn7 is installed above.
 sudo apt-get install -y --no-install-recommends libnvinfer5=5.1.5-1+cuda10.0 \
     libnvinfer-dev=5.1.5-1+cuda10.0
-cd Classical-Piano-Composer/
 touch training-log.txt
 nohup python3 lstm.py >> training-log.txt 2>&1 &
 
