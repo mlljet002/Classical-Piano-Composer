@@ -122,4 +122,4 @@ def train(model, network_input, network_output):
 if __name__ == '__main__':
     sl = sys.argv[1]
     print("Training with sequence length:",sl)
-    train_network(sl)
+    train_network(int(sl))
